@@ -77,7 +77,7 @@ emulation/
 - Install pygame using `pip install pygame`
 - Run the shell file: `./run_build.sh`
 ## Option 2:
-- Navigate to the directory `adaptive_audio_filtering_SV/emulation` using `cd`
+- Navigate to the directory `adaptive_audio_filter_emulator` using `cd`
 - Then execute the next commands in order to build and run the simulator:
   - `python python/samples.py`
   - `rm -r build`
