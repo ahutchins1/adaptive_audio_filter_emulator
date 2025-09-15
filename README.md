@@ -79,7 +79,7 @@ emulation/
 ## Option 2:
 - Navigate to the directory `adaptive_audio_filtering_SV/emulation` using `cd`
 - Then execute the next commands in order to build and run the simulator:
-  - `python ../pre_processing/samples.py`
+  - `python python/samples.py`
   - `rm -r build`
   - `rm -r out`
   - `cmake -S . -B build -G "MinGW Makefiles"`
