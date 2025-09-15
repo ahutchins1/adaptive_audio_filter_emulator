@@ -72,7 +72,7 @@ emulation/
 
 # How to run
 ## Option 1:
-- In a Git Bash terminal, navigate to the directory `adaptive_audio_filtering_SV/emulation` using `cd`
+- In a Git Bash terminal, navigate to the directory `adaptive_audio_filter_emulator` using `cd`
 - Give permission to the the shell file `run_build.sh` using `chmod +x run_build.sh`
 - Install pygame using `pip install pygame`
 - Run the shell file: `./run_build.sh`
