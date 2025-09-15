@@ -2,45 +2,45 @@
 
 ## Description
 This project implements an emulation of a low-energy stationary noise estimator and adaptive Decision-Directed Wiener filter for denoising audio samples.
-The hard processing is performed by a C++ script. The results obtained are written into .txt files, which are read by the main interface programmed in Python. There is an aditional python script executed at the beginning of the processing with the purpose of generating a .txt binary coded file from a .wav file.
+The core processing is performed by a C++ script. The results are written into .txt files, which are read by the main interface programmed in Python. There is an additional python script executed at the beginning of the processing with the purpose of generating a .txt binary coded file from a .wav file.
 
 ##  About the C++ Processing
-Starting from a single vector of samples obtained from the mentioned initial .txt file, a resize is implemented, where the signal is separated in frames with an overlap of 50%, which can be also interpreted as a vector of vectors, or a matrix. 
+Starting from a single vector of samples obtained from the mentioned initial .txt file, the signal is segmented into frames with an overlap of 50%. 
 Afterwards, a Hanning window is applied, which is followed by a 256-point FFT. Now in the frequency domain, the PSD of the spectrum for each frame is obtained. The PSD is used for obtaining an estimated PSD profile of the noise, which is later used for calculating the coefficients of an adaptive Decision-Directed Wiener filter.
-Once filtered, the signal is backwards transformed and an overlap-add is performed for reconstructing the time-domain final result.
+Once filtered, the signal is inverse-transformed and an overlap-add is performed for reconstructing the time-domain final result.
 In every key stage, .txt files are generated which are used by the main Python script to properly display the results.
 The estimation algorithm is based in Martin's 2001 "Noise Power Spectral Density Estimation Based on Optimal Smoothing and Minimum Statistics".
 The filtering technique is inspired in Ephraim and Malah's 1985 "Speech enhancement using a minimum-mean square error short-time spectral amplitude estimator".
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/cpp_ark.png" alt="Block diagram of the filter" width="800" />
+  <img src="resources/cpp_ark.png" alt="Block diagram of the filter" width="800" />
   <p><em>Figure 1: Block diagram of the filter.</em></p>
 </div>
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/omsne_ark.png" alt="Block diagram of the Noise Estimator" width="800" />
+  <img src="resources/omsne_ark.png" alt="Block diagram of the Noise Estimator" width="800" />
   <p><em>Figure 2: Block diagram of the Noise Estimator.</em></p>
 </div>
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/ddwfg_ark.png" alt="Block diagram of the adaptive Wiener filter coefficients calculation" width="800" />
+  <img src="resources/ddwfg_ark.png" alt="Block diagram of the adaptive Wiener filter coefficients calculation" width="800" />
   <p><em>Figure 3: Block diagram of the adaptive Wiener filter coefficients calculation.</em></p>
 </div>
 
 ## The Python GUI
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/emulator_tab1.png" alt="Block diagram of the filter" width="800" />
+  <img src="resources/emulator_tab1.png" alt="Block diagram of the filter" width="800" />
   <p><em>Figure 4: Signal Comparison tab. In blue the original inputed signal. In red the filtered outputed signal.</em></p>
 </div>
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/emulator_tab2.png" alt="Block diagram of the Noise Estimator" width="800" />
+  <img src="resources/emulator_tab2.png" alt="Block diagram of the Noise Estimator" width="800" />
   <p><em>Figure 5: Frame Analysis tab. Time-domain windowed signal and frequency-domain full PSD and estimated PSD of the noise.</em></p>
 </div>
 
 <div style="text-align: center;">
-  <img src="/emulation/resources/emulator_tab3.png" alt="Block diagram of the adaptive Wiener filter coefficients calculation" width="800" />
+  <img src="resources/emulator_tab3.png" alt="Block diagram of the adaptive Wiener filter coefficients calculation" width="800" />
   <p><em>Figure 6: Audio Player tab. Reproduce the original inputed audio file and the filtered audio file.</em></p>
 </div>
 
