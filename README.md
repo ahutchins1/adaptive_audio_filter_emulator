@@ -46,7 +46,7 @@ The filtering technique is inspired in Ephraim and Malah's 1985 "Speech enhancem
 
 ## Directory Structure
 ```
-emulation/
+adaptive_audio_filter_emulator/
 ├── include/ # Libraries for FFT implementation, matplots, file interfacing and audio processing classes and functions
 ├── python/ # Frontend files       
 ├── src/    # Backend processing source files
