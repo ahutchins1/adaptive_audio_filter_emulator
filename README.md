@@ -1,16 +1,17 @@
 # Noise Adaptive Filter Emulation
 
 ## Description
-This project implements an emulation of a low-energy stationary noise estimator and adaptive Decision-Directed Wiener filter for denoising audio samples.
+This project implements a floating-point emulation of a low-energy stationary noise estimator and adaptive Decision-Directed Wiener filter for denoising audio samples.
 The core processing is performed by a C++ script. The results are written into .txt files, which are read by the main interface programmed in Python. There is an additional python script executed at the beginning of the processing with the purpose of generating a .txt binary coded file from a .wav file.
 
 ##  About the C++ Processing
-Starting from a single vector of samples obtained from the mentioned initial .txt file, the signal is segmented into frames with an overlap of 50%. 
+Starting from a single vector of samples obtained from the mentioned initial .txt file, the signal is segmented into frames with an overlap of 50%.  
 Afterwards, a Hanning window is applied, which is followed by a 256-point FFT. Now in the frequency domain, the PSD of the spectrum for each frame is obtained. The PSD is used for obtaining an estimated PSD profile of the noise, which is later used for calculating the coefficients of an adaptive Decision-Directed Wiener filter.
-Once filtered, the signal is inverse-transformed and an overlap-add is performed for reconstructing the time-domain final result.
+Once filtered, the signal is inverse-transformed and an overlap-add is performed for reconstructing the time-domain final result.  
 In every key stage, .txt files are generated which are used by the main Python script to properly display the results.
-The estimation algorithm is based in Martin's 2001 "Noise Power Spectral Density Estimation Based on Optimal Smoothing and Minimum Statistics".
-The filtering technique is inspired in Ephraim and Malah's 1985 "Speech enhancement using a minimum-mean square error short-time spectral amplitude estimator".
+
+The estimation algorithm is based in Martin's 2001 "Noise Power Spectral Density Estimation Based on Optimal Smoothing and Minimum Statistics".  
+The filtering technique was inspired by Ephraim and Malah's 1985 "Speech Enhancement Using a Minimum Mean-Square Error Log-Spectral Amplitude Estimator" and Loizou's 2013 book "Speech Enhancement: Theory and Practice".
 
 <div style="text-align: center;">
   <img src="resources/cpp_ark.png" alt="Block diagram of the filter" width="800" />
